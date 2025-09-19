@@ -1,16 +1,16 @@
-- name : Configure Docker on EC2 Instances
-  hosts : ansibleserver
+- name: Configure Docker on EC2 Instances
+  hosts: all
   become: true
-  connection : ssh
-  tasks : 
-  - name: updating apt
-    command : sudo apt-get update
+  vars:
+    ansible_user: ubuntu
+    ansible_host: 172.31.12.181
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519   # use Ed25519 private key
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
-  - name : Install Docker
-    command : sudo apt-get install -y docker.io
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
 
-  - name : Start Docker Service
-    command : sudo systemctl start docker
-
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 chikara123/newimage
