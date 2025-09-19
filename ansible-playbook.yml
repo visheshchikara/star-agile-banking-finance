@@ -12,18 +12,18 @@
   - name : Start Docker Service
     command : sudo systemctl start docker
 
-  - name: Copy application code to remote
-    copy:
-    src: /home/devops/workspace/finance/   # Path on Jenkins/Ansible control node
-    dest: /home/devops/   # Path on target machine
-    owner: devops
-    group: devops
-    mode: 0755
+  - name : Copy application code to remote
+    copy :
+    src : /home/devops/workspace/finance/   # Path on Jenkins/Ansible control node
+    dest : /home/devops/   # Path on target machine
+    owner : devops
+    group : devops
+    mode : 0755
 
 
   - name : Build the docker image
     command : sudo docker build -t chikara123/finance-prj:v1.0 /home/devops/
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 chikara123/finance-prj:v1.0
+    command : docker run -itd -p 8084:8081 chikara123/finance-prj:v1.0
 
