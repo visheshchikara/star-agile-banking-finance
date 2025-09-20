@@ -14,7 +14,7 @@
 
   - name: Copy application code to remote
     copy:
-      src: /home/devops/workspace/finance/   # Path on Jenkins/Ansible control node
+      src: /home/devops/workspace/financeme/   # Path on Jenkins/Ansible control node
       dest: /home/devops/                    # Path on target machine
       owner: devops
       group: devops
