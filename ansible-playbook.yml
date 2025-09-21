@@ -32,5 +32,5 @@
     command : sudo docker build -t chikara123/finance-prj:v1.0 /home/devops/
 
   - name: Deploy Docker Container
-    command : docker run -d --name my-finance-app-container -p 8085:8081 chikara123/finance-prj:v1.0
+    command : sudo docker run -d --name my-finance-app-container -p 8085:8081 chikara123/finance-prj:v1.0
 
