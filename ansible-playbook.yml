@@ -12,10 +12,18 @@
   - name : Start Docker Service
     command : sudo systemctl start docker
 
+  - name: Create insureme directory
+    file:
+      path: /home/devops/financeme
+      state: directory
+      owner: devops
+      group: devops
+      mode: '0755'
+
   - name: Copy application code to remote
     copy:
       src: /home/devops/workspace/financeme/   # Path on Jenkins/Ansible control node
-      dest: /home/devops/                    # Path on target machine
+      dest: /home/devops/financeme                    # Path on target machine
       owner: devops
       group: devops
       mode: '0755'
