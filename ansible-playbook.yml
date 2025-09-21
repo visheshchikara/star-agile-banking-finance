@@ -12,7 +12,7 @@
   - name : Start Docker Service
     command : sudo systemctl start docker
 
-  - name: Create insureme directory
+  - name: Create financeme directory
     file:
       path: /home/devops/financeme
       state: directory
